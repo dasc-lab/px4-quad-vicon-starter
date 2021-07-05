@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+	<include file="$(find vicon_bridge)/launch/vicon.launch"/>
+
+	<include file="$(find mavros)/launch/px4.launch">
+		<arg name="fcu_url" value="/dev/ttyTHS1:921600"/>
+	</include>
+
+	<node pkg="quad_navigation" type="mocap_node" name="mocap_node"/>
+
+</launch>
+
