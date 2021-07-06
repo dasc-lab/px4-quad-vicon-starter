@@ -131,7 +131,7 @@ Technically, one should verify the boundary of the nets each time the nets are s
 
 ## Additional Notes:
 
-Connect pixhawk using raspi to QGC:
+Connect pixhawk using raspi to QGC: (make sure QGC is running before you start mavros on the px4)
 
 when launch `mavros` on the raspi, you can use the launch command:
 ```
