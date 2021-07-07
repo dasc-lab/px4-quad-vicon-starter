@@ -121,8 +121,8 @@ int main(int argc, char **argv)
   ros::NodeHandle nh;
 
   ros::Subscriber state_sub = nh.subscribe<mavros_msgs::State>("mavros/state", 10, state_cb);
-  ros::Subscriber sub_waypoint = nh.subscribe("/desired_setpoint", 10, setpointCallback);
-  ros::Subscriber sub5 = nh.subscribe("/mavros/local_position/pose", 10, mocapCallback);
+  ros::Subscriber sub_waypoint = nh.subscribe("desired_setpoint", 10, setpointCallback);
+  ros::Subscriber sub5 = nh.subscribe("mavros/local_position/pose", 10, mocapCallback);
 
   ros::Publisher setpoint_pub = nh.advertise<geometry_msgs::PoseStamped>("mavros/setpoint_position/local", 10);
 
