@@ -129,28 +129,6 @@ Technically, one should verify the boundary of the nets each time the nets are s
 
 
 
-## Additional Notes:
-
-
-
-when launch `mavros` on the raspi, you can use the launch command:
-```
-roslaunch mavros px4.launch fcu_url:=/dev/ttyTHS1:921600 gcs_url:=udp://<PORT NUMBER>@<ip address of ground station> tgt_system:=<vehicle id number (e.g. 1, 2 etc)>
-```
-
-QGC by default is listening to `<PORT NUMBER> = 14550`
-
-to use multiple vehicles in the latest version of QGC > application settings > Comm Links > Add. This creates a new port that QGC is listening to
-
-For example, we set 
-`Name: ` to the name of the vehicle
-`Automatically connect on start` : Yes
-`High Latency` : No
-`Type`: UDP
-`Port Number`: choose a number, incrementing from 14550
-
-For example, for 3 vehicles named vehicle1, vehicle2, vehicle3 with tgt_system id 1, 2, 3 that are publishing on ports 14550, 14551 and 14552, respectively, you specify the Port number in QGC as 14550, 14551, 14552, respectively. 
-
 
 
 ## Removing the telemetry modules, and communicating with QGC through Raspi
@@ -175,3 +153,5 @@ roslaunch mavros px4.launch fcu_url:=/dev/serial0:921600 gcs_url:=udp://:14555@<
 
 Has been tested successfully with `MAV_SYS_ID = 1, 3` with UDP ports `laptop/QGC UDP port = 14550, 14551` simultaneously. We have also tried `14550, 14560`.
 
+
+## Additional Notes:
