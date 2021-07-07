@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+    <arg name="id" default="nano3"/>
+    <group ns="$(arg id)">
+
+        <include file="$(find mavros)/launch/px4.launch">
+                <arg name="fcu_url" value="/dev/ttyTHS1:921600"/>
+                <arg name="gcs_url" value="udp://:14555@192.168.0.122:14551"/>
+                <arg name="tgt_system" value="3"/>
+        </include>
+
+        <node pkg="quad_navigation" type="mocap_node" name="mocap_node">
+		<remap from="vicon/quad/quad" to="/vicon/$(arg id)/$(arg id)"/>
+        </node>
+
+        <node pkg="quad_navigation" type="offb_node" name="offb_node" output="screen"/>
+    </group>
+
+</launch>
+

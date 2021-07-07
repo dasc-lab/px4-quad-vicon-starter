@@ -32,9 +32,9 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "mocap_node");
 
   ros::NodeHandle nh;
-  ros::Subscriber sub = nh.subscribe<geometry_msgs::TransformStamped>("vicon/nano3/nano3", 100, mocapCallback);
+  ros::Subscriber sub = nh.subscribe<geometry_msgs::TransformStamped>("vicon/quad/quad", 100, mocapCallback);
 
-  pub = nh.advertise<geometry_msgs::PoseStamped>("/mavros/vision_pose/pose", 20);
+  pub = nh.advertise<geometry_msgs::PoseStamped>("mavros/vision_pose/pose", 20);
 
   ros::Rate loop_rate(RATE);
 
