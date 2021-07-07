@@ -131,7 +131,7 @@ Technically, one should verify the boundary of the nets each time the nets are s
 
 ## Additional Notes:
 
-Connect pixhawk using raspi to QGC: (make sure QGC is running before you start mavros on the px4)
+
 
 when launch `mavros` on the raspi, you can use the launch command:
 ```
@@ -152,4 +152,26 @@ For example, we set
 For example, for 3 vehicles named vehicle1, vehicle2, vehicle3 with tgt_system id 1, 2, 3 that are publishing on ports 14550, 14551 and 14552, respectively, you specify the Port number in QGC as 14550, 14551, 14552, respectively. 
 
 
+
+## Removing the telemetry modules, and communicating with QGC through Raspi
+
+PX4 setup: each quadrotor has a unique `MAV_SYS_ID`. In this example it will be `ID`, defaults to 1.
+QGC setup (tested on v3.5.6 and newest): for each quadrotor, a separate UDP port is needed. 
+Application Settings > Comm Links > Add and specify
+- `Name` - a unique name for the drone
+- `Type=UDP`
+- `Listening Port` to a port number. Increment from the default = 14550. 
+- `automatically connect on start` = checked
+- `High Latency` = unchecked
+and click ok.
+
+and now 
+```
+roslaunch mavros px4.launch fcu_url:=/dev/serial0:921600 gcs_url:=udp://:14555@<ip address of laptop>:<laptop/QGC UDP port> tgt_system:=<MAV_SYS_ID>
+```
+
+- Make sure QGC is running before you start mavros on the px4
+- dont change `MAV_COMP_ID` and dont change `14555` on gcs_url.
+
+Has been tested successfully with `MAV_SYS_ID = 1, 3` with UDP ports `laptop/QGC UDP port = 14550, 14551` simultaneously. We have also tried `14550, 14560`.
 
