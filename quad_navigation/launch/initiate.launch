@@ -3,11 +3,11 @@
 
 	<include file="$(find vicon_bridge)/launch/vicon.launch"/>
 
-	<group ns="nano3">
+	<group ns="miseryQuad">
 		<include file="$(find mavros)/launch/px4.launch">
 			<arg name="fcu_url" value="/dev/ttyTHS1:921600"/>
 			<arg name="gcs_url" value="udp://:14555@192.168.0.122:14551"/>
-			<arg name="tgt_system" value="3"/>
+			<arg name="tgt_system" value="1"/>
 		</include>
 	</group>
 
