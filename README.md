@@ -154,4 +154,6 @@ roslaunch mavros px4.launch fcu_url:=/dev/serial0:921600 gcs_url:=udp://:14555@<
 Has been tested successfully with `MAV_SYS_ID = 1, 3` with UDP ports `laptop/QGC UDP port = 14550, 14551` simultaneously. We have also tried `14550, 14560`.
 
 
+See https://github.com/mavlink/mavros/tree/c13ceed94ce42f6c4ed961885d2b61466b5d1459/mavros for details on supported communication schema
+
 ## Additional Notes:
