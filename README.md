@@ -157,3 +157,14 @@ Has been tested successfully with `MAV_SYS_ID = 1, 3` with UDP ports `laptop/QGC
 See https://github.com/mavlink/mavros/tree/c13ceed94ce42f6c4ed961885d2b61466b5d1459/mavros for details on supported communication schema
 
 ## Additional Notes:
+
+1.  In the cloned SD card, the system connects to dd-wrt wifi by default. You can change it by editing /etc/netplan/50-cloud-init.yaml file
+2.  If you want to use *ifconfig*, install the following package first
+ ```
+sudo apt-get install net-tools
+```
+3.  Sometimes ifconfig might show up error saying thge user does not have administratrive privileges. You can give your user administrative priviliges by running:
+```
+sudo usermod -aG sudo username
+sudo ln -s /sbin/ifconfig /usr/bin/ifconfig
+```
